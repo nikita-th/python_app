@@ -1,0 +1,28 @@
+psql -U postgres
+CREATE USER ctgdevops WITH PASSWORD 'devops123';
+CREATE DATABASE ctg_devops_ktracker;
+GRANT ALL PRIVILEGES ON DATABASE ctg_devops_ktracker TO ctgdevops;
+ALTER USER your_username CREATEDB;
+ALTER USER your_username WITH SUPERUSER;
+\q
+psql -h localhost -U ctgdevops -d ctg_devops_ktracker -p 5432
+CREATE SCHEMA IF NOT EXISTS users;
+CREATE TABLE users.users (
+  id SERIAL PRIMARY KEY,
+  designation VARCHAR(80) NOT NULL,
+  email VARCHAR(120) UNIQUE NOT NULL,
+  first_name VARCHAR(120) NOT NULL,
+  is_admin VARCHAR(120) NOT NULL,
+  last_name VARCHAR(120) NOT NULL,
+  middle_name VARCHAR(120) NOT NULL,
+  oidc_id VARCHAR(120) NOT NULL,
+  phone_number VARCHAR(120) NOT NULL,
+  previous_exp VARCHAR(120) NOT NULL
+);
+
+
+
+
+
+
+
